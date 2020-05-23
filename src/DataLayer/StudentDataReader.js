@@ -43,7 +43,6 @@ module.exports = class StudentDataReader {
         this.writeArrayToFile(this.getArrayFromFile().concat([student]));
     }
 
-    // WARNING: THIS WILL OVERRIDE ANY DATA CURRENTLY IN THE "Students.json" FILE
     generateRandomStudents(teacherIds) {
         this.writeArrayToFile(Student.generateRandomPeople(100, teacherIds));
     }
