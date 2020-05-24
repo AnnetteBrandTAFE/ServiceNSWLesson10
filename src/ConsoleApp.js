@@ -25,6 +25,7 @@ async function Program() {
     const _studentDataReader = new StudentDataReader(path.join(baseFilePath, "Students.json"));
     const _teacherDataReader = new TeacherDataReader(path.join(baseFilePath, "Teachers.json"));
     const _studentService = new StudentService(_studentDataReader, _teacherDataReader);
+    const _teacherService = new TeacherService(_studentDataReader, _teacherDataReader);
 
     let shouldLoop = true;
     while (shouldLoop) {
@@ -126,22 +127,22 @@ async function Program() {
                             console.log("Going back to main menu");
                             break;
                         case "3":
-                            let Id = await askQuestion("Please enter the Student unique identification number: ");
-                            let matchingStudentsId = _studentService.getStudent(Id);
-                            console.log(matchingStudentsId);
+                            let Id = await askQuestion("Please enter the Teachers unique identification number: ");
+                            let matchingTeachersId = _teacherService.getTeacher(Id);
+                            console.log(matchingTeachersId);
                             console.log("Going back to main menu");
                             break;
                         case "4": 
-                            let update = await askQuestion("Please enter the Student unique identificaiton number: ");
-                            let matchingStudentsId2 = _studentService.getStudent(Id);
+                            let update = await askQuestion("Please enter the Teachers unique identificaiton number: ");
+                            let matchingTeachersId2 = _teacherService.getTeacher(Id);
                             return matchingStudentsId2 
                             break;
                         
                         case "5":
-                            let deleteTerm = await askQuestion("Please enter the Student unique identification number:");
-                            let matchingResults = _studentService.deleteStudent(deleteTerm);
+                            let deleteTerm = await askQuestion("Please enter the Teachers unique identification number:");
+                            let matchingResults = _teacherService.deleteTeacher(deleteTerm);
                             console.log(matchingResults);
-                            console.log("Student has been deleted");
+                            console.log("Teacher has been deleted");
                         case "6":
                             break;
                     }
